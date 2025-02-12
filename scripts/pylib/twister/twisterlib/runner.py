@@ -41,6 +41,7 @@ if sys.platform == 'linux':
 from twisterlib.environment import ZEPHYR_BASE
 
 sys.path.insert(0, os.path.join(ZEPHYR_BASE, "scripts/pylib/build_helpers"))
+
 from domains import Domains
 from twisterlib.coverage import run_coverage_instance
 from twisterlib.environment import TwisterEnv
@@ -1792,7 +1793,7 @@ class ProjectBuilder(FilterBuilder):
                     harness.bsim_run(instance.handler.get_test_timeout())
                 else:
                     instance.status = TwisterStatus.ERROR
-                    instance.reason = str("BSIM not ready")
+                    instance.reason = "BSIM not ready"
                     logger.error(instance.reason)
             else:
                 instance.handler.handle(harness)
